@@ -1,44 +1,5 @@
 
 
-// Efeito de loading
-window.addEventListener('load', function() {
-    const loadingOverlay = document.querySelector('.loading-overlay');
-    if (loadingOverlay) {
-        setTimeout(() => {
-            loadingOverlay.classList.add('hidden');
-            setTimeout(() => {
-                loadingOverlay.remove();
-            }, 500);
-        }, 1500);
-    }
-});
-
-// Cursor personalizado
-document.addEventListener('DOMContentLoaded', function() {
-    const cursor = document.createElement('div');
-    cursor.className = 'cursor-glow';
-    document.body.appendChild(cursor);
-
-    document.addEventListener('mousemove', function(e) {
-        cursor.style.left = e.clientX - 10 + 'px';
-        cursor.style.top = e.clientY - 10 + 'px';
-    });
-
-    // Efeito de hover nos elementos interativos
-    const interactiveElements = document.querySelectorAll('a, button, .product-card, .feature, .benefit-item');
-    interactiveElements.forEach(el => {
-        el.addEventListener('mouseenter', function() {
-            cursor.style.transform = 'scale(2)';
-            cursor.style.background = 'radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, transparent 70%)';
-        });
-        
-        el.addEventListener('mouseleave', function() {
-            cursor.style.transform = 'scale(1)';
-            cursor.style.background = 'radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 70%)';
-        });
-    });
-});
-
 // Navegação mobile
 document.addEventListener('DOMContentLoaded', function() {
     const navToggle = document.querySelector('.nav-toggle');
@@ -109,100 +70,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }, observerOptions);
 
     // Observar elementos para animação
-    const animateElements = document.querySelectorAll('.product-card, .feature, .contact-item, .testimonial-card, .benefit-item, .stat-item');
+    const animateElements = document.querySelectorAll('.product-card, .feature, .contact-item, .testimonial-card');
     animateElements.forEach(el => {
         el.classList.add('animate-on-scroll');
         observer.observe(el);
     });
-
-    // Adicionar efeitos de hover dinâmicos
-    const productCards = document.querySelectorAll('.product-card');
-    productCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-15px) scale(1.02)';
-            this.style.boxShadow = '0 40px 80px rgba(0, 0, 0, 0.2)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-            this.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.1)';
-        });
-    });
-
-    // Efeito de parallax suave
-    window.addEventListener('scroll', function() {
-        const scrolled = window.pageYOffset;
-        const parallaxElements = document.querySelectorAll('.hero-content, .particles');
-        
-        parallaxElements.forEach(element => {
-            const speed = 0.5;
-            element.style.transform = `translateY(${scrolled * speed}px)`;
-        });
-    });
-
-    // Adicionar classe de shimmer ao título principal
-    const heroTitle = document.querySelector('.hero-title');
-    if (heroTitle) {
-        heroTitle.classList.add('text-shimmer');
-    }
-
-    // Efeito de typing no subtítulo
-    const heroSubtitle = document.querySelector('.hero-subtitle');
-    if (heroSubtitle) {
-        const text = heroSubtitle.textContent;
-        heroSubtitle.textContent = '';
-        let i = 0;
-        
-        function typeWriter() {
-            if (i < text.length) {
-                heroSubtitle.textContent += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, 50);
-            }
-        }
-        
-        setTimeout(typeWriter, 1000);
-    }
-
-    // Otimização do vídeo para conversão
-    const heroVideo = document.querySelector('.hero-video');
-    if (heroVideo) {
-        // Garantir que o vídeo carregue corretamente
-        heroVideo.addEventListener('load', function() {
-            console.log('Vídeo carregado com sucesso para conversão');
-            hideVideoLoading();
-        });
-        
-        // Adicionar efeito de hover no vídeo
-        const videoContainer = document.querySelector('.hero-video-container');
-        if (videoContainer) {
-            videoContainer.addEventListener('mouseenter', function() {
-                this.querySelector('.hero-video').style.filter = 'brightness(0.9) contrast(1.4) saturate(1.3)';
-            });
-            
-            videoContainer.addEventListener('mouseleave', function() {
-                this.querySelector('.hero-video').style.filter = 'brightness(0.8) contrast(1.3) saturate(1.2)';
-            });
-        }
-    }
-});
-
-// Função global para esconder o loading do vídeo
-function hideVideoLoading() {
-    const videoLoading = document.getElementById('videoLoading');
-    const heroVideo = document.querySelector('.hero-video');
-    
-    if (videoLoading) {
-        setTimeout(() => {
-            videoLoading.classList.add('hidden');
-        }, 2000); // Esconder após 2 segundos
-    }
-    
-    if (heroVideo) {
-        setTimeout(() => {
-            heroVideo.classList.add('loaded');
-        }, 1000); // Mostrar vídeo após 1 segundo
-    }
 
     // Funcionalidade de compra direta
     const buyNowButtons = document.querySelectorAll('.buy-now-btn');
@@ -662,13 +534,11 @@ style.textContent = `
         top: 100%;
         left: 0;
         width: 100%;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
         padding: 2rem;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 0 0 20px 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     }
     
     .nav-toggle.active span:nth-child(1) {
@@ -692,7 +562,7 @@ style.textContent = `
     }
     
     .animate-in {
-        animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        animation: fadeInUp 0.8s ease-out forwards;
     }
     
     .lazy {
@@ -702,19 +572,6 @@ style.textContent = `
     
     .lazy.loaded {
         opacity: 1;
-    }
-    
-    .hover-glow:hover {
-        animation: glow 2s ease-in-out infinite;
-    }
-    
-    .text-shimmer {
-        background: linear-gradient(90deg, #ffffff, #f0f9ff, #ffffff);
-        background-size: 200% 100%;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        animation: shimmer 3s ease-in-out infinite;
     }
     
     @media (max-width: 768px) {
