@@ -1,0 +1,46 @@
+{
+  "pixelId": "734569286044392",
+  "timestamp": "2025-08-29T21:08:36.353Z",
+  "checks": {
+    "fileStructure": {
+      "files": {
+        "./public/index.html": true,
+        "./public/script.js": true,
+        "./public/styles.css": true
+      },
+      "allFilesExist": true,
+      "timestamp": "2025-08-29T21:08:36.420Z"
+    },
+    "htmlConfiguration": {
+      "hasPixelCode": true,
+      "hasPixelInit": true,
+      "hasPixelScript": true,
+      "hasNoscript": true,
+      "timestamp": "2025-08-29T21:08:36.431Z"
+    },
+    "jsConfiguration": {
+      "hasFbqChecks": true,
+      "hasViewContent": true,
+      "hasLead": true,
+      "hasInitiateCheckout": true,
+      "timestamp": "2025-08-29T21:08:36.469Z"
+    },
+    "facebookStatus": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/plain",
+        "access-control-allow-origin": "",
+        "access-control-allow-credentials": "true",
+        "strict-transport-security": "max-age=31536000; includeSubDomains",
+        "cross-origin-resource-policy": "cross-origin",
+        "server": "proxygen-bolt",
+        "x-fb-connection-quality": "EXCELLENT; q=0.9, rtt=27, rtx=0, c=10, mss=1392, tbw=3450, tp=-1, tpl=-1, uplat=0, ullat=0",
+        "alt-svc": "h3=\":443\"; ma=86400",
+        "date": "Fri, 29 Aug 2025 21:08:37 GMT",
+        "connection": "keep-alive",
+        "content-length": "0"
+      },
+      "timestamp": "2025-08-29T21:08:36.897Z"
+    }
+  }
+}

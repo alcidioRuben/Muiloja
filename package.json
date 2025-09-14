@@ -1,0 +1,32 @@
+{
+  "name": "multiloja-pixel-checker",
+  "version": "1.0.0",
+  "description": "Ferramenta para verificar a configuração do Facebook Pixel na Multiloja",
+  "main": "pixel-checker.js",
+  "scripts": {
+    "start": "node pixel-checker.js",
+    "test": "node pixel-checker.js",
+    "dev": "node --inspect pixel-checker.js",
+    "install-deps": "npm install"
+  },
+  "keywords": [
+    "facebook-pixel",
+    "tracking",
+    "analytics",
+    "multiloja",
+    "ecommerce"
+  ],
+  "author": "Multiloja",
+  "license": "MIT",
+  "dependencies": {
+    "puppeteer": "^21.0.0"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/multiloja/pixel-checker.git"
+  }
+}

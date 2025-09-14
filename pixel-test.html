@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste do Facebook Pixel - Multiloja</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .test-button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .test-button:hover {
+            background: #0056b3;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .info { background: #d1ecf1; color: #0c5460; }
+        .console {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            font-family: monospace;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .pixel-info {
+            background: #e7f3ff;
+            border: 1px solid #b3d9ff;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Teste do Facebook Pixel - Multiloja</h1>
+        
+        <div class="pixel-info">
+            <h3>📊 Informações do Pixel</h3>
+            <p><strong>ID do Pixel:</strong> 734569286044392</p>
+            <p><strong>Status:</strong> <span id="pixelStatus">Verificando...</span></p>
+            <p><strong>Última verificação:</strong> <span id="lastCheck">-</span></p>
+        </div>
+
+        <div class="test-section">
+            <h3>🧪 Testes de Eventos</h3>
+            <p>Clique nos botões abaixo para testar diferentes eventos do pixel:</p>
+            
+            <button class="test-button" onclick="testPageView()">📄 PageView</button>
+            <button class="test-button" onclick="testViewContent()">👁️ ViewContent</button>
+            <button class="test-button" onclick="testLead()">📝 Lead</button>
+            <button class="test-button" onclick="testInitiateCheckout()">🛒 InitiateCheckout</button>
+            <button class="test-button" onclick="testAddToCart()">🛍️ AddToCart</button>
+            <button class="test-button" onclick="testPurchase()">💰 Purchase</button>
+        </div>
+
+        <div class="test-section">
+            <h3>🔍 Verificação de Configuração</h3>
+            <button class="test-button" onclick="checkPixelConfiguration()">Verificar Configuração</button>
+            <button class="test-button" onclick="checkPixelLoading()">Verificar Carregamento</button>
+            <button class="test-button" onclick="checkPixelEvents()">Verificar Eventos</button>
+        </div>
+
+        <div class="test-section">
+            <h3>📊 Console de Eventos</h3>
+            <div id="eventConsole" class="console"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>📋 Status dos Testes</h3>
+            <div id="testResults"></div>
+        </div>
+    </div>
+
+    <!-- Facebook Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '734569286044392');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=734569286044392&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Facebook Pixel Code -->
+
+    <script>
+        // Função para adicionar logs ao console
+        function logEvent(message, type = 'info') {
+            const console = document.getElementById('eventConsole');
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = document.createElement('div');
+            logEntry.innerHTML = `<span style="color: #666;">[${timestamp}]</span> ${message}`;
+            console.appendChild(logEntry);
+            console.scrollTop = console.scrollHeight;
+            
+            // Também log no console do navegador
+            console.log(`[${timestamp}] ${message}`);
+        }
+
+        // Função para atualizar status
+        function updateStatus(message, type = 'info') {
+            const statusDiv = document.getElementById('pixelStatus');
+            statusDiv.textContent = message;
+            statusDiv.className = type;
+        }
+
+        // Função para adicionar resultado de teste
+        function addTestResult(testName, status, details = '') {
+            const resultsDiv = document.getElementById('testResults');
+            const resultEntry = document.createElement('div');
+            resultEntry.className = `status ${status}`;
+            resultEntry.innerHTML = `<strong>${testName}:</strong> ${details}`;
+            resultsDiv.appendChild(resultEntry);
+        }
+
+        // Verificar se o pixel está carregado
+        function checkPixelLoading() {
+            logEvent('🔍 Verificando carregamento do pixel...');
+            
+            if (typeof fbq !== 'undefined') {
+                logEvent('✅ Facebook Pixel carregado com sucesso');
+                updateStatus('Pixel Carregado', 'success');
+                addTestResult('Carregamento do Pixel', 'success', 'Pixel carregado corretamente');
+            } else {
+                logEvent('❌ Facebook Pixel não foi carregado');
+                updateStatus('Pixel Não Carregado', 'error');
+                addTestResult('Carregamento do Pixel', 'error', 'Pixel não foi carregado');
+            }
+            
+            document.getElementById('lastCheck').textContent = new Date().toLocaleString();
+        }
+
+        // Verificar configuração do pixel
+        function checkPixelConfiguration() {
+            logEvent('🔍 Verificando configuração do pixel...');
+            
+            try {
+                // Verificar se o pixel está inicializado
+                if (typeof fbq !== 'undefined') {
+                    logEvent('✅ Função fbq disponível');
+                    
+                    // Verificar se o pixel foi inicializado
+                    if (fbq._fbq && fbq._fbq.loaded) {
+                        logEvent('✅ Pixel inicializado corretamente');
+                        addTestResult('Configuração do Pixel', 'success', 'Pixel inicializado corretamente');
+                    } else {
+                        logEvent('⚠️ Pixel pode não estar totalmente inicializado');
+                        addTestResult('Configuração do Pixel', 'error', 'Pixel não totalmente inicializado');
+                    }
+                } else {
+                    logEvent('❌ Função fbq não disponível');
+                    addTestResult('Configuração do Pixel', 'error', 'Função fbq não disponível');
+                }
+            } catch (error) {
+                logEvent(`❌ Erro ao verificar configuração: ${error.message}`);
+                addTestResult('Configuração do Pixel', 'error', `Erro: ${error.message}`);
+            }
+        }
+
+        // Verificar eventos do pixel
+        function checkPixelEvents() {
+            logEvent('🔍 Verificando eventos do pixel...');
+            
+            if (typeof fbq !== 'undefined') {
+                // Verificar se há eventos na fila
+                if (fbq._fbq && fbq._fbq.queue) {
+                    logEvent(`📊 Eventos na fila: ${fbq._fbq.queue.length}`);
+                    addTestResult('Eventos do Pixel', 'success', `${fbq._fbq.queue.length} eventos na fila`);
+                } else {
+                    logEvent('📊 Nenhum evento na fila');
+                    addTestResult('Eventos do Pixel', 'info', 'Nenhum evento na fila');
+                }
+            } else {
+                logEvent('❌ Não é possível verificar eventos - pixel não carregado');
+                addTestResult('Eventos do Pixel', 'error', 'Pixel não carregado');
+            }
+        }
+
+        // Teste de PageView
+        function testPageView() {
+            logEvent('📄 Testando evento PageView...');
+            
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'PageView');
+                logEvent('✅ Evento PageView enviado');
+                addTestResult('PageView', 'success', 'Evento enviado com sucesso');
+            } else {
+                logEvent('❌ Não é possível enviar PageView - pixel não carregado');
+                addTestResult('PageView', 'error', 'Pixel não carregado');
+            }
+        }
+
+        // Teste de ViewContent
+        function testViewContent() {
+            logEvent('👁️ Testando evento ViewContent...');
+            
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'ViewContent', {
+                    content_name: 'Fita Dupla Face ULTRA FORTE',
+                    content_category: 'Fita Adesiva',
+                    value: 488,
+                    currency: 'MZN'
+                });
+                logEvent('✅ Evento ViewContent enviado');
+                addTestResult('ViewContent', 'success', 'Evento enviado com sucesso');
+            } else {
+                logEvent('❌ Não é possível enviar ViewContent - pixel não carregado');
+                addTestResult('ViewContent', 'error', 'Pixel não carregado');
+            }
+        }
+
+        // Teste de Lead
+        function testLead() {
+            logEvent('📝 Testando evento Lead...');
+            
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'Lead', {
+                    content_category: 'Contato',
+                    value: 0,
+                    currency: 'MZN'
+                });
+                logEvent('✅ Evento Lead enviado');
+                addTestResult('Lead', 'success', 'Evento enviado com sucesso');
+            } else {
+                logEvent('❌ Não é possível enviar Lead - pixel não carregado');
+                addTestResult('Lead', 'error', 'Pixel não carregado');
+            }
+        }
+
+        // Teste de InitiateCheckout
+        function testInitiateCheckout() {
+            logEvent('🛒 Testando evento InitiateCheckout...');
+            
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'InitiateCheckout', {
+                    content_name: 'Fita Dupla Face ULTRA FORTE',
+                    content_category: 'Fita Adesiva',
+                    value: 488,
+                    currency: 'MZN'
+                });
+                logEvent('✅ Evento InitiateCheckout enviado');
+                addTestResult('InitiateCheckout', 'success', 'Evento enviado com sucesso');
+            } else {
+                logEvent('❌ Não é possível enviar InitiateCheckout - pixel não carregado');
+                addTestResult('InitiateCheckout', 'error', 'Pixel não carregado');
+            }
+        }
+
+        // Teste de AddToCart
+        function testAddToCart() {
+            logEvent('🛍️ Testando evento AddToCart...');
+            
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'AddToCart', {
+                    content_name: 'Fita Dupla Face ULTRA FORTE',
+                    content_category: 'Fita Adesiva',
+                    value: 488,
+                    currency: 'MZN'
+                });
+                logEvent('✅ Evento AddToCart enviado');
+                addTestResult('AddToCart', 'success', 'Evento enviado com sucesso');
+            } else {
+                logEvent('❌ Não é possível enviar AddToCart - pixel não carregado');
+                addTestResult('AddToCart', 'error', 'Pixel não carregado');
+            }
+        }
+
+        // Teste de Purchase
+        function testPurchase() {
+            logEvent('💰 Testando evento Purchase...');
+            
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'Purchase', {
+                    value: 488,
+                    currency: 'MZN',
+                    content_name: 'Fita Dupla Face ULTRA FORTE',
+                    content_category: 'Fita Adesiva'
+                });
+                logEvent('✅ Evento Purchase enviado');
+                addTestResult('Purchase', 'success', 'Evento enviado com sucesso');
+            } else {
+                logEvent('❌ Não é possível enviar Purchase - pixel não carregado');
+                addTestResult('Purchase', 'error', 'Pixel não carregado');
+            }
+        }
+
+        // Verificação automática quando a página carrega
+        window.addEventListener('load', function() {
+            logEvent('🚀 Página carregada, iniciando verificações...');
+            
+            // Aguardar um pouco para o pixel carregar
+            setTimeout(() => {
+                checkPixelLoading();
+                checkPixelConfiguration();
+                checkPixelEvents();
+            }, 2000);
+        });
+
+        // Verificar se o pixel está funcionando a cada 5 segundos
+        setInterval(() => {
+            if (typeof fbq !== 'undefined') {
+                updateStatus('Pixel Ativo', 'success');
+            } else {
+                updateStatus('Pixel Inativo', 'error');
+            }
+        }, 5000);
+    </script>
+</body>
+</html>

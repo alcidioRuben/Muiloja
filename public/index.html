@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiloja - Sua Loja Completa</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Facebook Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '734569286044392');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=734569286044392&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Facebook Pixel Code -->
+</head>
+<body>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay">
+        <div class="loading-spinner"></div>
+    </div>
+    
+    <div class="background-logo">
+        <div class="logo-overlay"></div>
+    </div>
+
+    <!-- Partículas animadas -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h1>Multiloja</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#produtos">Produtos</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <!-- Vídeo Profissional para Conversão -->
+            <div class="hero-video-container">
+                <div class="video-loading" id="videoLoading">
+                    <i class="fas fa-play-circle"></i>
+                    <div>Carregando vídeo promocional...</div>
+                </div>
+                <div class="video-overlay"></div>
+                <iframe 
+                    class="hero-video" 
+                    src="https://www.youtube.com/embed/SjxsMBw91C8?si=_Hp3O3IaP-Bkl-WA&autoplay=1&mute=1&loop=1&playlist=SjxsMBw91C8&controls=0&showinfo=0&rel=0&modestbranding=1&start=0" 
+                    title="Vídeo Promocional Multiloja"
+                    frameborder="0" 
+                    allow="autoplay; encrypted-media; fullscreen" 
+                    allowfullscreen
+                    onload="hideVideoLoading()">
+                </iframe>
+            </div>
+            
+            <div class="hero-content">
+                <h1 class="hero-title">Bem-vindo à <span class="highlight">Multiloja</span></h1>
+                <p class="hero-subtitle">Descubra produtos incríveis com qualidade excepcional e tecnologia de ponta</p>
+                <a href="#produtos" class="cta-button btn-hover-effect">
+                    <i class="fas fa-shopping-bag"></i>
+                    Ver Produtos
+                </a>
+            </div>
+        </section>
+
+        <section id="produtos" class="products">
+            <div class="container">
+                <h2 class="section-title">Nosso Produto</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="produto.jpeg" alt="Produto Multiloja" class="product-img">
+                            <div class="product-overlay">
+                                <button class="view-details">Ver Detalhes</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                                                         <h3 class="product-name">Fita Dupla Face ULTRA FORTE</h3>
+                             <p class="product-description">CANSADO de furar paredes? Chegou a solução prática e moderna! Super fixação – segura até objetos pesados, resistente à água, 4 METROS de aderência poderosa!</p>
+                             <div class="product-price">
+                                 <span class="price">MZN 488</span>
+                                 <span class="original-price">Antes: MZN 600</span>
+                                 <span class="discount">Poupe 112!</span>
+                             </div>
+                                                         <a href="#" class="buy-now-btn" onclick="showDataModal('Fita Dupla Face ULTRA FORTE'); return false;">
+                                 <i class="fab fa-whatsapp"></i>
+                                 QUERO!
+                             </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Benefícios e Entrega -->
+                <div class="benefits-section">
+                                         <div class="benefit-item">
+                         <i class="fas fa-truck"></i>
+                         <div>
+                             <h4>Entrega GRÁTIS</h4>
+                             <p>Chimoio, Beira, Nampula, Lichinga, Maxixe, Tete, Quelimane, Pemba e Maputo</p>
+                         </div>
+                     </div>
+                     <div class="benefit-item">
+                         <i class="fas fa-credit-card"></i>
+                         <div>
+                             <h4>Paga na Entrega</h4>
+                             <p>Sem compromissos! Paga só quando receber o produto</p>
+                         </div>
+                     </div>
+                     <div class="benefit-item">
+                         <i class="fas fa-gift"></i>
+                         <div>
+                             <h4>Oferta Especial</h4>
+                             <p>Leva 3 unidades por 1200mts e pague na entrega</p>
+                         </div>
+                     </div>
+                                 </div>
+             </div>
+         </section>
+ 
+         <!-- Seção de Estatísticas -->
+         <section class="stats">
+             <div class="container">
+                 <div class="stats-grid">
+                     <div class="stat-item">
+                         <div class="stat-number">5000+</div>
+                         <div class="stat-label">Clientes Satisfeitos</div>
+                     </div>
+                     <div class="stat-item">
+                         <div class="stat-number">98%</div>
+                         <div class="stat-label">Taxa de Aprovação</div>
+                     </div>
+                     <div class="stat-item">
+                         <div class="stat-number">24h</div>
+                         <div class="stat-label">Tempo de Resposta</div>
+                     </div>
+                     <div class="stat-item">
+                         <div class="stat-number">100%</div>
+                         <div class="stat-label">Garantia de Qualidade</div>
+                     </div>
+                 </div>
+             </div>
+         </section>
+ 
+         <section id="sobre" class="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2 class="section-title">Sobre a Multiloja</h2>
+                        <p>Somos uma empresa comprometida em oferecer os melhores produtos com qualidade superior e atendimento excepcional. Nossa missão é proporcionar uma experiência de compra única e satisfatória.</p>
+                                                 <div class="features">
+                             <div class="feature">
+                                 <i class="fas fa-shipping-fast"></i>
+                                 <h4>Entrega Rápida</h4>
+                                 <p>Entregamos em todo Mocambique</p>
+                             </div>
+                             <div class="feature">
+                                 <i class="fas fa-shield-alt"></i>
+                                 <h4>Qualidade Garantida</h4>
+                                 <p>Produtos testados e aprovados</p>
+                             </div>
+                             <div class="feature">
+                                 <i class="fas fa-headset"></i>
+                                 <h4>Suporte 24/7</h4>
+                                 <p>Atendimento sempre disponível</p>
+                             </div>
+                         </div>
+                         
+                         <!-- Vantagens Técnicas do Produto -->
+                         <div class="technical-features">
+                             <h3>Vantagens Técnicas</h3>
+                             <div class="tech-grid">
+                                 <div class="tech-item">
+                                     <i class="fas fa-layer-group"></i>
+                                     <h4>Dupla Face</h4>
+                                     <p>Adesão em ambas as superfícies</p>
+                                 </div>
+                                 <div class="tech-item">
+                                     <i class="fas fa-tint"></i>
+                                     <h4>Resistente à Água</h4>
+                                     <p>Mantém aderência mesmo molhada</p>
+                                 </div>
+                                 <div class="tech-item">
+                                     <i class="fas fa-cut"></i>
+                                     <h4>Cortável</h4>
+                                     <p>Adapta-se a qualquer tamanho</p>
+                                 </div>
+                                 <div class="tech-item">
+                                     <i class="fas fa-recycle"></i>
+                                     <h4>Reutilizável</h4>
+                                     <p>Lave e reutilize várias vezes</p>
+                                 </div>
+                             </div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="contact">
+            <div class="container">
+                <h2 class="section-title">Entre em Contato</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Endereço</h4>
+                                <p>Rua das Lojas, 123 - Centro</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Telefone</h4>
+                                <p>+258 87 256 8371</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>contato@multiloja.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <input type="text" placeholder="Seu Nome" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Seu Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Sua Mensagem" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section id="depoimentos" class="testimonials">
+            <div class="container">
+                <h2 class="section-title">O que nossos clientes dizem</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p>"Excelente qualidade! O produto superou todas as minhas expectativas. Recomendo muito!"</p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="author-info">
+                                    <h4>Maria Silva</h4>
+                                    <span>Cliente desde 2022</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p>"Atendimento incrível e entrega super rápida. Já é minha terceira compra!"</p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="author-info">
+                                    <h4>João Santos</h4>
+                                    <span>Cliente desde 2021</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p>"Produto de primeira linha com preço justo. Definitivamente voltarei a comprar!"</p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="author-info">
+                                    <h4>Ana Costa</h4>
+                                    <span>Cliente desde 2023</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                         </div>
+         </section>
+         
+         <!-- Seção FAQ -->
+         <section class="faq">
+             <div class="container">
+                 <h2 class="section-title">Perguntas Frequentes</h2>
+                 <div class="faq-grid">
+                     <div class="faq-item">
+                         <div class="faq-question">
+                             <h4>Como funciona a entrega?</h4>
+                             <i class="fas fa-chevron-down"></i>
+                         </div>
+                         <div class="faq-answer">
+                             <p>Entregamos em todas as principais cidades de Moçambique. A entrega é gratuita e você paga apenas na recepção do produto.</p>
+                         </div>
+                     </div>
+                     <div class="faq-item">
+                         <div class="faq-question">
+                             <h4>A fita danifica as paredes?</h4>
+                             <i class="fas fa-chevron-down"></i>
+                         </div>
+                         <div class="faq-answer">
+                             <p>Não! Nossa fita é especialmente desenvolvida para não danificar superfícies. Ela remove facilmente sem deixar marcas.</p>
+                         </div>
+                     </div>
+                     <div class="faq-item">
+                         <div class="faq-question">
+                             <h4>Posso cortar a fita?</h4>
+                             <i class="fas fa-chevron-down"></i>
+                         </div>
+                         <div class="faq-answer">
+                             <p>Sim! A fita é totalmente cortável. Você pode cortar no tamanho exato que precisa para seu projeto.</p>
+                         </div>
+                     </div>
+                     <div class="faq-item">
+                         <div class="faq-question">
+                             <h4>Qual a durabilidade?</h4>
+                             <i class="fas fa-chevron-down"></i>
+                         </div>
+                         <div class="faq-answer">
+                             <p>A fita mantém sua aderência por anos, mesmo em ambientes úmidos. Se perder aderência, basta lavar e reutilizar.</p>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </section>
+     </main>
+ 
+     <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Multiloja</h3>
+                    <p>Sua loja completa com os melhores produtos e atendimento.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#produtos">Produtos</a></li>
+                        <li><a href="#sobre">Sobre</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Redes Sociais</h4>
+                    <div class="social-links">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Multiloja. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão flutuante do WhatsApp -->
+    <div class="whatsapp-float">
+        <a href="#" class="whatsapp-btn" title="WhatsApp" onclick="showDataModal('WhatsApp Flutuante'); return false;">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- Modal de Coleta de Dados -->
+    <div id="dataModal" class="data-modal">
+        <div class="data-modal-overlay"></div>
+        <div class="data-modal-content">
+            <div class="data-modal-header">
+                <h3>📋 Complete seus dados para entrega</h3>
+                <button class="close-data-modal">&times;</button>
+            </div>
+            <div class="data-modal-body">
+                <form id="deliveryForm" class="delivery-form">
+                    <div class="form-group">
+                        <label for="customerName">Nome completo:</label>
+                        <input type="text" id="customerName" name="customerName" placeholder="Digite seu nome completo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="deliveryTime">Horário e data preferidos:</label>
+                        <input type="datetime-local" id="deliveryTime" name="deliveryTime" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="deliveryLocation">Localização (Bairro e paragem):</label>
+                        <input type="text" id="deliveryLocation" name="deliveryLocation" placeholder="Ex: Bairro Central, Paragem do Mercado" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customerPhone">Telefone:</label>
+                        <input type="tel" id="customerPhone" name="customerPhone" placeholder="+258 87 XXX XXX" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="submit-delivery-btn">
+                            <i class="fab fa-whatsapp"></i>
+                            Confirmar Pedido
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
